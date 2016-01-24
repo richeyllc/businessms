@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 
+  phone_number_id: 
+  incoming_phone_number_id: 
+  received_text: MyString
+  reply_text: MyString
+
+two:
+  customer_id: 
+  phone_number_id: 
+  incoming_phone_number_id: 
+  received_text: MyString
+  reply_text: MyString

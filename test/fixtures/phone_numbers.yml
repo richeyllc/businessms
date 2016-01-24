@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  ours: false
+  customer_id: 
+  our_metadata: MyText
+  customer_metadata: MyText
+
+two:
+  number: MyString
+  ours: false
+  customer_id: 
+  our_metadata: MyText
+  customer_metadata: MyText

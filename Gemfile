@@ -43,3 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+# The following are the gems that have been added since the initial commit:
+gem 'twilio-ruby', '~> 4.2.1'
+gem "twitter-bootstrap-rails"
+gem "therubyracer"
+

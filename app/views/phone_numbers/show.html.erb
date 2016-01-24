@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @phone_number.number %>
+</p>
+
+<p>
+  <strong>Ours:</strong>
+  <%= @phone_number.ours %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @phone_number.customer %>
+</p>
+
+<p>
+  <strong>Our metadata:</strong>
+  <%= @phone_number.our_metadata %>
+</p>
+
+<p>
+  <strong>Customer metadata:</strong>
+  <%= @phone_number.customer_metadata %>
+</p>
+
+<%= link_to 'Edit', edit_phone_number_path(@phone_number) %> |
+<%= link_to 'Back', phone_numbers_path %>
