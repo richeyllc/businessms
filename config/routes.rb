@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, path: "u", path_names: { sign_in: 'login', sign_out: 'logout', confirmation: 'verification', sign_up: 'register' }
   resources :customers
   resources :phone_numbers
   resources :mappings
+  devise_scope :user do
+    match "sign_in", to: "devise/sessions#new", via: [:get]
+  end
+  root to: 'home#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

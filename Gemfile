@@ -54,4 +54,4 @@ gem 'jquery-turbolinks'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'bootstrap-datepicker-rails', require: 'bootstrap-datepicker-rails', git: 'https://github.com/Nerian/bootstrap-datepicker-rails.git'
 gem 'twitter-typeahead-rails', git: "git://github.com/yourabi/twitter-typeahead-rails.git"
-
+gem 'devise'
