@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124001349) do
+ActiveRecord::Schema.define(version: 20160127043532) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "business_name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20160124001349) do
     t.string   "uuid"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "mapping_types", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "mappings", force: :cascade do |t|
@@ -29,10 +36,16 @@ ActiveRecord::Schema.define(version: 20160124001349) do
     t.string   "reply_text"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "mapping_type_id"
+    t.text     "external_function"
+    t.text     "hours_url"
+    t.text     "location"
+    t.text     "call_back_info"
   end
 
   add_index "mappings", ["customer_id"], name: "index_mappings_on_customer_id"
   add_index "mappings", ["incoming_phone_number_id"], name: "index_mappings_on_incoming_phone_number_id"
+  add_index "mappings", ["mapping_type_id"], name: "index_mappings_on_mapping_type_id"
   add_index "mappings", ["phone_number_id"], name: "index_mappings_on_phone_number_id"
 
   create_table "phone_numbers", force: :cascade do |t|

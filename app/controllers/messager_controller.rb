@@ -23,9 +23,25 @@ class MessagerController < ApplicationController
   #"ApiVersion"=>"2010-04-01"}
   def incoming
     params.inspect
+
+    # Incoming message flow:
+    # 1. message comes in... Check "from" number.
+    # 2. Do we know who this number is from?
+    # If we DON'T know who it's from then determine which customer this number belongs to
+    # 3. Look up the mapping for this customer and possibly this number.
+    # 4. Return the correct response text
+    
     cust = PhoneNumber.find_by(number: params[:To]).customer
     if cust.nil?
       # we received a message to a number that we don't know about
+      
+      # see if we can figure out who this customer is.
+      # call a new method to open a new string of questions about adding the phone number to an account.
+      #
+    else
+      # Look up the mapping for this customer and incoming number. 
+
+
       # render the error message...
       render 'error'
     end

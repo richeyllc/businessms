@@ -1,0 +1,34 @@
+%ul.nav.nav-tabs
+  %li{class: (active_tab == 'general') ? 'active' : nil}
+    = link_to customers_path(anchor: 'general'), title: 'General', data: {toggle: 'tab'} do
+      %span.glyphicon.glyphicon-file
+      %span.hidden-xs.hidden-sm General
+
+  / TODO: Check for permissions here. Only show the elements that have permission to be shown.
+  / - if can?(:index, Subscription)
+  - if true
+    %li{class: (active_tab == 'subscriptions') ? 'active' : nil}
+      = link_to customers_path, title: 'Subscriptions' do
+        %span.glyphicon.glyphicon-repeat
+        %span.hidden-xs.hidden-sm Subscriptions
+
+  / - if can?(:index, Contract)
+  - if true
+    %li{class: (active_tab == 'contracts') ? 'active' : nil}
+      = link_to customers_path, title: 'My Agreement' do
+        %span.glyphicon.glyphicon-briefcase
+        %span.hidden-xs.hidden-sm My Agreement
+
+  / - if can?(:index, CreditCard)
+  - if true
+    %li{class: (active_tab == 'credit_cards') ? 'active' : nil}
+      = link_to customers_path, title: 'Credit Cards' do
+        %span.glyphicon.glyphicon-credit-card
+        %span.hidden-xs.hidden-sm Credit Cards
+
+  / - if can?(:index, Document)
+  - if true
+    %li{class: (active_tab == 'documents') ? 'active' : nil}
+      = link_to customers_path, title: 'Documents' do
+        %span.glyphicon.glyphicon-folder-close
+        %span.hidden-xs.hidden-sm Documents
