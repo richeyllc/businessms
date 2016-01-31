@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127052320) do
+ActiveRecord::Schema.define(version: 20160131050800) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "business_name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20160127052320) do
     t.string   "uuid"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "mapped_phones", force: :cascade do |t|
+    t.integer  "mapping_id"
+    t.integer  "phone_number_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "mapping_types", force: :cascade do |t|
@@ -30,12 +37,10 @@ ActiveRecord::Schema.define(version: 20160127052320) do
 
   create_table "mappings", force: :cascade do |t|
     t.integer  "customer_id"
-    t.integer  "phone_number_id"
-    t.integer  "incoming_phone_number_id"
     t.string   "received_text"
     t.string   "reply_text"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "mapping_type_id"
     t.text     "external_function"
     t.text     "hours_url"
@@ -44,9 +49,7 @@ ActiveRecord::Schema.define(version: 20160127052320) do
   end
 
   add_index "mappings", ["customer_id"], name: "index_mappings_on_customer_id"
-  add_index "mappings", ["incoming_phone_number_id"], name: "index_mappings_on_incoming_phone_number_id"
   add_index "mappings", ["mapping_type_id"], name: "index_mappings_on_mapping_type_id"
-  add_index "mappings", ["phone_number_id"], name: "index_mappings_on_phone_number_id"
 
   create_table "phone_numbers", force: :cascade do |t|
     t.string   "number"

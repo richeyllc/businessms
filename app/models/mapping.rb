@@ -1,6 +1,7 @@
 class Mapping < ActiveRecord::Base
   belongs_to :customer
-  belongs_to :phone_number
   belongs_to :incoming_phone_number
   belongs_to :mapping_type
+  has_many :mapped_phones
+  has_many :phone_numbers, through: :mapped_phones
 end

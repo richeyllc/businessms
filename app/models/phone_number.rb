@@ -1,5 +1,7 @@
 class PhoneNumber < ActiveRecord::Base
   belongs_to :customer
+  has_many :mapped_phones
+  has_many :mappings, through: :mapped_phones
 
   before_create :add_plus1
   before_update :add_plus1

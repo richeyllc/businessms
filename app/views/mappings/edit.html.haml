@@ -1,0 +1,11 @@
+- title "My Dashboard", true, {fa_icon: 'tachometer'}
+
+- content_for(:sidebar) do
+  = render 'mappings/partials/mapping_tabs', active_tab: 'general'
+
+%h1 Editing Mapping
+
+= render 'form'
+
+= link_to 'Show', @mapping |
+= link_to 'Back', mappings_path
