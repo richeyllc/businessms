@@ -1,4 +1,4 @@
 class MappedPhone < ActiveRecord::Base
-  belongs_to :phone_numbers
-  belongs_to :mappings
+  belongs_to :phone_number
+  belongs_to :mapping
 end

@@ -29,4 +29,11 @@ module ApplicationHelper
       unavailable
     end
   end
+  def current_customer 
+    unless session[:current_customer].blank?
+      Customer.find(session[:current_customer]["id"])
+    else
+      "No Customer Defined"
+    end
+  end
 end

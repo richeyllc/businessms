@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, path: "u", path_names: { sign_in: 'login', sign_out: 'logout', confirmation: 'verification', sign_up: 'register' }
-  resources :customers
-  resources :phone_numbers
-  resources :mappings
+  match "choose_customer", controller: "home", action: "choose_customer", via: [:get]
+  match "select_active_customer", controller: "home", action: "select_active_customer", via: [:get]
+  resources :customers do
+    resources :mappings
+    resources :phone_numbers
+  end
   devise_scope :user do
     match "sign_in", to: "devise/sessions#new", via: [:get]
   end

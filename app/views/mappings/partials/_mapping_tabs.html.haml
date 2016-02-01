@@ -1,7 +1,7 @@
 %li.disabled
-  = link_to root_path, title: "current_customer.to_s" do
+  = link_to root_path, title: current_customer.business_name do
     = fa_icon "male"
-    %span.hidden-xs.hidden-sm= "current_customer.full_name"
+    %span.hidden-xs.hidden-sm= current_customer.business_name
 
 %li{class: (active_tab == 'general') ? 'active' : nil}
   = link_to root_path(anchor: 'general'), title: 'Dashboard', data: {toggle: 'tab'} do

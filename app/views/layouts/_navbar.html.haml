@@ -92,9 +92,9 @@
 
       -# User Menu
       %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: current_user.email}
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: current_user.name}
           = fa_icon "user", class: 'fa-3x'
-          %span.fa-title= current_user.email
+          %span.fa-title= current_user.name
           %b.caret
         %ul.dropdown-menu
           %li

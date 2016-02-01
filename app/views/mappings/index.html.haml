@@ -21,16 +21,14 @@
                 %th= "Delete"
               - @mappings.each do |mapping|
                 %tr
-                  - if mapping.incoming_phone_number.nil?
-                    %td= "+1-000-000-0000"
-                  - else
-                    %td= mapping.incoming_phone_number
+                  %td= link_to "Applied Numbers", customer_phone_numbers_path
                   %td= mapping.received_text
                   %td= mapping.reply_text
                   %td= mapping.mapping_type.name
-                  %td= link_to 'Edit', edit_mapping_path(mapping)
-                  %td= link_to 'Destroy', mapping, method: :delete, data: { confirm: 'Are you sure?' }
+                  %td= link_to 'Edit', edit_customer_mapping_path(current_user.customers.first, mapping)
+                  / TODO: Fix the following link... It's broken
+                  %td= link_to 'Destroy', root_path, method: :delete, data: { confirm: 'Are you sure?' }
             %table.table.table-striped.table-hover.table-condensed
             %tbody
               %tr
-                = link_to 'Add New Mapping', new_mapping_path
+                = link_to 'Add New Mapping', new_customer_mapping_path
