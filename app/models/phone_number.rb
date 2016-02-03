@@ -8,6 +8,8 @@ class PhoneNumber < ActiveRecord::Base
 
   def add_plus1
     # we need to add +1 to the beginning of the phone number. 
-    self.number = "+1" + self.number
+    unless self.number.include?("+1")
+      self.number = "+1" + self.number
+    end
   end
 end

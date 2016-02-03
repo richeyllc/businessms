@@ -1,0 +1,6 @@
+%h1 Editing Phone Number
+
+= render 'form'
+
+= link_to 'Show', customer_phone_number_path(current_customer, @phone_number) |
+= link_to 'Back', customer_phone_numbers_path(current_customer)

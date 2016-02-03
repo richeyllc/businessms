@@ -1,0 +1,28 @@
+.p{:id => "notice"}= notice
+
+%h1 Listing Phone Numbers
+
+%table
+  %thead
+    %tr
+      %th Number
+      %th Ours
+      %th Customer
+      %th Our metadata
+      %th Customer metadata
+      %th{:colspan => "3"}
+
+  %tbody
+    - @phone_numbers.each do |phone_number|
+      %tr
+        %td= phone_number.number
+        %td= phone_number.ours
+        %td= phone_number.customer.business_name
+        %td= phone_number.our_metadata
+        %td= phone_number.customer_metadata
+        %td= link_to 'Show', customer_phone_number_path(current_customer, phone_number)
+        %td= link_to 'Edit', edit_customer_phone_number_path(current_customer, phone_number)
+        %td= link_to 'Destroy', customer_phone_number_path(current_customer, phone_number), method: :delete, data: { confirm: 'Are you sure?' }
+%br
+
+= link_to 'New Phone number', new_customer_phone_number_path(current_customer)

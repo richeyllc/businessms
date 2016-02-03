@@ -1,0 +1,29 @@
+= form_for([current_customer, @phone_number]) do |f|
+  - if @phone_number.errors.any?
+    .error_explanation
+      %h2= "#{pluralize(@phone_number.errors.count, 'error')} prohibited this phone_number from being saved:"
+      %ul
+        - @phone_number.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :number
+    %br
+    = f.text_field :number
+  .field
+    = f.label :ours 
+    %br
+    = f.check_box :ours
+  .field
+    = f.label :customer_id
+    %br
+    = f.text_field :customer_id
+  .field
+    = f.label :our_metadata 
+    %br
+    = f.text_area :our_metadata
+  .field
+    = f.label :customer_metadata 
+    %br
+    = f.text_area :customer_metadata
+  .actions
+    = f.submit
