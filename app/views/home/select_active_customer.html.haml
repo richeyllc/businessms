@@ -1,0 +1,7 @@
+- title "Choose Customer", true, {fa_icon: 'tachometer'}
+
+- content_for(:sidebar) do
+  = render 'home_tabs', active_tab: 'general'
+%ul
+  - @customers.each do |customer|
+    %li= link_to customer.business_name, customer_selected_path(chosen_customer: customer), method: :post

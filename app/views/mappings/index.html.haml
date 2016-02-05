@@ -21,7 +21,7 @@
                 %th= "Delete"
               - @mappings.each do |mapping|
                 %tr
-                  %td= link_to "Applied Numbers", customer_phone_numbers_path
+                  %td= link_to "Applied Numbers", json_get_applied_numbers_path({mapping_id: mapping.id}), data: { toggle: "modal", target: "#ajax-modal" }
                   %td= mapping.received_text
                   %td= mapping.reply_text
                   %td= mapping.mapping_type.name
@@ -32,3 +32,4 @@
             %tbody
               %tr
                 = link_to 'Add New Mapping', new_customer_mapping_path
+= render 'json/json_director/get_applied_numbers'

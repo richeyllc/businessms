@@ -2,12 +2,19 @@ Rails.application.routes.draw do
   devise_for :users, path: "u", path_names: { sign_in: 'login', sign_out: 'logout', confirmation: 'verification', sign_up: 'register' }
   match "choose_customer", controller: "home", action: "choose_customer", via: [:get]
   match "select_active_customer", controller: "home", action: "select_active_customer", via: [:get]
+  match "customer_selected", controller: "home", action: "customer_selected", via: [:post]
+  match "clear_customer", controller: "home", action:"clear_customer", via: [:get]
   resources :customers do
     resources :mappings
     resources :phone_numbers
   end
   devise_scope :user do
     match "sign_in", to: "devise/sessions#new", via: [:get]
+  end
+
+  namespace :json, path: 'json' do
+    # Use this namespace for modals and other crap to get quick views
+    match 'get_applied_numbers', controller: "json_director", action: "get_applied_numbers", via: [:post]
   end
   root to: 'home#index'
 

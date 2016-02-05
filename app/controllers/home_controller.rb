@@ -18,4 +18,14 @@ class HomeController < ApplicationController
   def select_active_customer
     @customers = current_user.customers
   end
+
+  def customer_selected
+    params.inspect
+    session[:current_customer] = Customer.find(params[:chosen_customer])
+    redirect_to customer_mappings_path(session[:current_customer])
+  end
+  def clear_customer
+    session[:current_customer] = nil
+    redirect_to select_active_customer_path
+  end
 end

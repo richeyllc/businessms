@@ -1,3 +1,8 @@
+- title "My Dashboard", true, {fa_icon: 'tachometer'}
+
+- content_for(:sidebar) do
+  = render 'mappings/partials/mapping_tabs', active_tab: 'general'
+  
 .p{:id => "notice"}= notice
 
 %h1 Listing Phone Numbers

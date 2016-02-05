@@ -1,10 +1,15 @@
 class MappingsController < ApplicationController
   before_action :set_mapping, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_customer
+
+  current_customer = Customer.new
 
   # GET /mappings
   # GET /mappings.json
   def index
-    @mappings = Mapping.all
+    # @mappings = Mapping.all
+    current_customer = set_current_customer
+    @mappings = current_customer.mappings
   end
 
   # GET /mappings/1
@@ -69,6 +74,10 @@ class MappingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mapping_params
-      params.require(:mapping).permit(:customer_id, :phone_number_id, :incoming_phone_number_id, :received_text, :reply_text)
+      params.require(:mapping).permit(:customer_id, :phone_number_id, :incoming_phone_number_id, :received_text, :reply_text, :current_customer)
+    end
+
+    def set_current_customer
+      current_customer = Customer.find(session[:current_customer]["id"])
     end
 end
