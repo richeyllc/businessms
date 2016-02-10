@@ -10,7 +10,7 @@ $(title).html('My Messages');
 //hides the modal and shows the ajax content
 $(loader).fadeToggle('fast', function() {
   $(loader).fadeOut('slow');
-  $(content).html('<%= j render("index") %>');
+  $(content).html('<%= j render("get_applied_numbers") %>');
   $(modal).modal();
 });
 //brings the loader back up + gets rid of the content when linking to another controller method etc

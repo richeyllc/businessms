@@ -14,7 +14,14 @@ Rails.application.routes.draw do
 
   namespace :json, path: 'json' do
     # Use this namespace for modals and other crap to get quick views
-    match 'get_applied_numbers', controller: "json_director", action: "get_applied_numbers", via: [:post]
+    resources :customers do
+      resources :mappings
+      resources :phone_numbers
+    end
+    resources :mappings do
+      resources :phone_numbers
+    end
+    match 'get_applied_numbers', controller: "json_director", action: "get_applied_numbers", via: [:get]
   end
   root to: 'home#index'
 

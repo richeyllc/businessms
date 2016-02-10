@@ -1,10 +1,42 @@
-#ajax-modal.modal.hide.fade{:tabindex => "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
-    %h3.modal-title Campustask
-  .modal-body
-    .modal-body-content
-    .ajax-loader
-      loading....
-  .modal-footer
-    %button.btn{"data-dismiss" => "modal", :type => "button"} Close
+- if true
+  %h2
+    %p.alert.alert-danger RADIUS ACCOUNT SUSPENDED
+
+%div#button-toolbar
+  .toolbar
+    - unless @radius.present?
+      = link_to root_path(@customer), class: 'btn btn-sm btn-primary', data: {method: :post, confirm: 'Are you sure?', remote: true }, title: 'Register Customer' do
+        %span.glyphicon.glyphicon-plus
+        Register
+
+#radius_modal_content
+  .panel.panel-default
+    .panel-heading
+      %h4#radius_modal_header Radius Login Information
+    .panel-body
+      %table.table.table-striped.table-hover.table-condensed
+        %tbody
+          %tr
+            %th= "customer"
+            %td= "@radius.customer.full_name"
+          %tr
+            %th= "registered_at"
+            %td= "pl(@radius.registered_at, format: :short)"
+          %tr
+            %th= "username"
+            %td= "@radius.username"
+          %tr
+            %th= "password"
+            %td= "@radius.password"
+          %tr
+            %th= "chastity_mode"
+            %td= "Filtered : Not Filtered"
+          %tr
+            %th= "last_synced_at"
+            %td= "pl(@radius.last_synced_at, format: :short)"
+          %tr
+            %th= "reated_at"
+            %td= "pl(@radius.created_at, format: :short)"
+          %tr
+            %th= "updated_at"
+            %td= "pl(@radius.updated_at, format: :short"

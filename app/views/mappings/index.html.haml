@@ -21,7 +21,8 @@
                 %th= "Delete"
               - @mappings.each do |mapping|
                 %tr
-                  %td= link_to "Applied Numbers", json_get_applied_numbers_path({mapping_id: mapping.id}), data: { toggle: "modal", target: "#ajax-modal" }
+                  / %td= link_to "Applied Numbers", json_get_applied_numbers_path({mapping_id: mapping.id}), remote: true, class: 'static-popup-link'
+                  %td= link_to "Applied Numbers", json_mapping_phone_numbers_path(@mapping.id), class: 'btn btn-success', role: "button", data: {toggle: "modal", target: '#customerModal', remote: true}, title: "Mappings to Phone Numbers"
                   %td= mapping.received_text
                   %td= mapping.reply_text
                   %td= mapping.mapping_type.name
@@ -32,4 +33,12 @@
             %tbody
               %tr
                 = link_to 'Add New Mapping', new_customer_mapping_path
-= render 'json/json_director/get_applied_numbers'
+
+.modal.fade#customerModal{tabindex: '-1'}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &times;
+        %h3.modal-title
+      .modal-body
+        %p

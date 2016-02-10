@@ -56,3 +56,4 @@ gem 'bootstrap-datepicker-rails', require: 'bootstrap-datepicker-rails', git: 'h
 gem 'twitter-typeahead-rails', git: "git://github.com/yourabi/twitter-typeahead-rails.git"
 gem 'active_link_to'
 gem 'devise'
+gem 'cancan'

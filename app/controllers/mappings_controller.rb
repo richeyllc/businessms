@@ -1,7 +1,7 @@
 class MappingsController < ApplicationController
   before_action :set_mapping, only: [:show, :edit, :update, :destroy]
   before_action :set_current_customer
-
+  # load_and_authorize_resource :customer
   current_customer = Customer.new
 
   # GET /mappings
