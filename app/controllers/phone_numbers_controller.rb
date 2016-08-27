@@ -1,10 +1,11 @@
 class PhoneNumbersController < ApplicationController
   before_action :set_phone_number, only: [:show, :edit, :update, :destroy]
-
+  before_action :current_customer
   # GET /phone_numbers
   # GET /phone_numbers.json
   def index
-    @phone_numbers = PhoneNumber.all
+    @phone_numbers = current_customer.phone_numbers
+    # @phone_numbers = PhoneNumber.all
   end
 
   # GET /phone_numbers/1
@@ -70,5 +71,9 @@ class PhoneNumbersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def phone_number_params
       params.require(:phone_number).permit(:number, :ours, :customer_id, :our_metadata, :customer_metadata)
+    end
+
+    def current_customer
+      Customer.find(params[:customer_id])
     end
 end

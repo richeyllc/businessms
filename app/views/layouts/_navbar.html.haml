@@ -18,20 +18,25 @@
               %span.glyphicon.glyphicon-asterisk
               Lead Requests
 
-      %li{class: (params[:controller] == "master/customers") ? "active" : nil}
-        = active_link_to root_path, active: ["master/customers"], title: 'Customers' do
+      %li{class: (params[:controller] == "customers") ? "active" : nil}
+        = active_link_to customers_path, active: ["customers"], title: 'Customers' do
           = fa_icon "male", class: 'fa-3x align-center'
           %span.fa-title Customers
 
-      %li{class: (params[:controller] == "master/packages") ? "active" : nil}
-        = active_link_to root_path, active: ["master/packages"], title: 'Packages' do
-          = fa_icon "gift", class: 'fa-3x'
-          %span.fa-title Packages
+      %li{class: (params[:controller] == "phone_numbers") ? "active" : nil}
+        - if current_customer.blank?
+          = active_link_to phone_numbers_path, active: ["phone_numbers"], title: 'Phone Numbers' do
+            = fa_icon "phone", class: 'fa-3x'
+            %span.fa-title Phone Numbers
+        - else
+          = active_link_to customer_phone_numbers_path(current_customer), active: ["phone_numbers"], title: 'Phone Numbers' do
+            = fa_icon "phone", class: 'fa-3x'
+            %span.fa-title Phone Numbers
 
       %li{class: (params[:controller] == "master/device_types") ? "active" : nil}
-        = active_link_to root_path, active: ["master/device_types"], title: 'Device Types' do
-          = fa_icon "hdd-o", class: 'fa-3x'
-          %span.fa-title Device Types
+        = active_link_to root_path, active: ["master/device_types"], title: 'Mappings' do
+          = fa_icon "random", class: 'fa-3x'
+          %span.fa-title Mappings
 
       %li{class: (params[:controller] == "master/access_points") ? "active" : nil}
         = active_link_to root_path, active: ["master/access_points"], title: 'Access Points' do

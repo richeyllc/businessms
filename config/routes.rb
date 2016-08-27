@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   match "select_active_customer", controller: "home", action: "select_active_customer", via: [:get]
   match "customer_selected", controller: "home", action: "customer_selected", via: [:post]
   match "clear_customer", controller: "home", action:"clear_customer", via: [:get]
+  match "super_admin_choose_customer", controller: "home", action: "super_admin_choose_customer", via: [:get]
+  namespace :super_admin do
+    resources :customers
+  end
   resources :customers do
     resources :mappings
     resources :phone_numbers

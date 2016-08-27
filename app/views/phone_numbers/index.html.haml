@@ -2,7 +2,7 @@
 
 - content_for(:sidebar) do
   = render 'mappings/partials/mapping_tabs', active_tab: 'general'
-  
+
 .p{:id => "notice"}= notice
 
 %h1 Listing Phone Numbers
@@ -22,7 +22,7 @@
       %tr
         %td= phone_number.number
         %td= phone_number.ours
-        %td= phone_number.customer.business_name
+        %td= phone_number.customer.nil? ? "Not assigned" : phone_number.customer.business_name
         %td= phone_number.our_metadata
         %td= phone_number.customer_metadata
         %td= link_to 'Show', customer_phone_number_path(current_customer, phone_number)

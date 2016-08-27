@@ -6,5 +6,14 @@ class User < ActiveRecord::Base
 
   has_many :customers_users
   has_many :customers, through: :customers_users
+  belongs_to :user_type
+
+  def has_role?(role)
+    if user_type.name == role
+      true
+    else
+      false
+    end
+  end
 
 end
